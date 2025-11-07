@@ -19,20 +19,24 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.14.1</version>
-          <configuration>
-            <release>17</release>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-    <plugins>
-      <plugin>
+   <plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-enforcer-plugin</artifactId>
+  <version>3.6.2</version>
+  <executions>
+    <execution>
+      <id>enforce-maven</id>
+      <goals><goal>enforce</goal></goals>
+      <configuration>
+        <rules>
+          <requireJavaVersion>
+            <version>[21,)</version>
+          </requireJavaVersion>
+        </rules>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
         <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
